@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-sans-app), system-ui, sans-serif;
+  --font-mono: var(--font-mono-app), ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: #f9fafb;
+  color: #111827;
+  font-family: var(--font-sans);
+}
+
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.ring-pulse::before,
+.ring-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  animation: ring-pulse 1.6s ease-out infinite;
+}
+.ring-pulse::after { animation-delay: 0.8s; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.wave span {
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: center;
+  animation: wave 0.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse::before, .ring-pulse::after, .wave span, .animate-pulse { animation: none !important; }
+}

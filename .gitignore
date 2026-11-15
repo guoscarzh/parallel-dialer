@@ -4,3 +4,9 @@ node_modules
 !.env.example
 .next
 .DS_Store
+data/leads.csv
+data/cache/
+
+# TypeScript / Next build artifacts
+*.tsbuildinfo
+next-env.d.ts
