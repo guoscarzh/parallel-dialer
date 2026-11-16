@@ -33,8 +33,9 @@ export function session(): Session {
       batchStartedAt: null,
       history: [],
       briefs: {},
-      simulate: process.env.SIMULATE_CALLS === "true",
-      web: false,
+      // CALL_MODE=live|web|sim picks the startup mode (SIMULATE_CALLS=true is the older spelling of sim).
+      simulate: process.env.CALL_MODE === "sim" || (!process.env.CALL_MODE && process.env.SIMULATE_CALLS === "true"),
+      web: process.env.CALL_MODE === "web",
       webPhones: [],
     };
   }
